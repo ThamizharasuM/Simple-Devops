@@ -21,8 +21,7 @@ Open the Ec2 instance at Mobaterm.
 	$yum -y install wget
 	$sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 	$sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-	$amazon-linux-extras install epel 
-	$amazon-linux-extras install java-openjdk11  
+	$ yum install java-11 -y   
 	$ yum -y install jenkins
 	$ service jenkins start
 	$ chkconfig jenkins on
