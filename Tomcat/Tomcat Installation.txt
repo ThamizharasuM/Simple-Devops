@@ -19,18 +19,18 @@ Open the Ec2 instance at Mobaterm.
 4. Tomcat Download(https://tomcat.apache.org/download-80.cgi)
 	$cd /opt
 	$wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.83/bin/apache-tomcat-8.5.83.tar.gz
-	$tar -xvzf /opt/apache-tomcat-8.5.83.tar.gz
-	$chmod +x /opt/apache-tomcat-8.5.83/bin/startup.sh 
-	$chmod +x /opt/apache-tomcat-8.5.83/bin/shutdown.sh 
-	$ln -s /opt/apache-tomcat-8.5.83/bin/startup.sh /usr/local/bin/tomcatup
-	$ln -s /opt/apache-tomcat-8.5.83/bin/shutdown.sh /usr/local/bin/tomcatdown
+	$tar -xvzf /opt/apache-tomcat-8.5.88.tar.gz
+	$chmod +x /opt/apache-tomcat-8.5.88/bin/startup.sh 
+	$chmod +x /opt/apache-tomcat-8.5.88/bin/shutdown.sh 
+	$ln -s /opt/apache-tomcat-8.5.88/bin/startup.sh /usr/local/bin/tomcatup
+	$ln -s /opt/apache-tomcat-8.5.88/bin/shutdown.sh /usr/local/bin/tomcatdown
 	$tomcatdown
 	$tomcatup
 
 5. Connect with server using http://<Public_IP>:8080
 
 6. Change Connector Port
-	$vi /opt/apache-tomcat-8.5.83/conf/server.xml
+	$vi /opt/apache-tomcat-8.5.88/conf/server.xml
 	update the port as "8090" & save.
 	Restart the Tomcat server to check the changes.
 	$tomcatdown
@@ -44,7 +44,7 @@ Open the Ec2 instance at Mobaterm.
 	$tomcatup
 
 9. Update users information in tomcat-users.xml
-	$vi /opt/apache-tomcat-8.5.83/conf/tomcat-users.xml
+	$vi /opt/apache-tomcat-8.5.88/conf/tomcat-users.xml
 	 <role rolename="manager-gui"/>
 	 <role rolename="manager-script"/>
 	 <role rolename="manager-jmx"/>
