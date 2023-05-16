@@ -1,0 +1,20 @@
+Set git user and email using commands(one-time activity):
+git config --global user.name "name"
+git config --global user.email "mail"
+
+To create ssh key-->
+ssh-keygen
+* SSH key will be created in /c/Users/Admin/.ssh/id_rsa.pub
+* Copy the SSH key from the above folder and paste it in SSH key of GitHub
+
+
+Create a repository in GitHub with Name: Simple_DevOps
+
+To initiate a repository in local system--> git init .
+To clone a remote repository--> git clone <ssh of Simple_DevOps repository>
+To add changes to local repository(staged) --> git add .
+To commit changes to local repository--> git commit -m "<comments"
+To Push changes to repository--> 
+git pull
+git push origin master
+
