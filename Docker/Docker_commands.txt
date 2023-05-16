@@ -1,0 +1,15 @@
+To start docker service: service docker start
+To view docker service: service docker status
+To start docker service after restart: chkconfig docker on
+To pull image from Docker repository: docker pull <image-name>
+To view running containers: docker ps
+To see docker images: docker images
+To create image from DockerFile: docker built -t <image-name>:<tag> .
+To create a container from Image: docker run -d --name <container_name> -p 8081:8080 <image-name> 
+To start a container: docker start <container-name>
+To get into a container: docker exec -it <container-name> /bin/bash
+To Stop a container: docker stop <container-name>
+To delete a container: rm -rf <container-name>
+To delete a image: rm -rf <image-name>
+To tag a image name: docker tag <image-name> <user-account/image-name>:<tag/version>
+To push a image: docker push <new-image-name>:<version/tag>
