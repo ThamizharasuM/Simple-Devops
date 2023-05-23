@@ -38,6 +38,8 @@ Open the Ec2 instance at Mobaterm.
 	Configure java path
 	Manage Jenkins > Global Tool Configuration > JDK
 	Create another admin user id
+	New User: Jenkins
+	Password: Jenkins123
 
 8.Test Jenkins Jobs
 	Create “new item”
