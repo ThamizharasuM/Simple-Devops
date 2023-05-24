@@ -79,3 +79,6 @@ Code:
 	docker run -d --name registrationapp -p 8081:8080 regapp:v1
 
 •	Save
+
+To check the Output/deployment:
+search <public IP of DH>:8081/webapp
