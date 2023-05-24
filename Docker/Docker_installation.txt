@@ -1,0 +1,12 @@
+1. Create a new AWS instance with t2.micro
+2. Once launched, enter the following commands one by one in the CLI
+	$ yum install docker --> to install docker
+	$ service docker start --> to start docker
+	$ service docker status --> to check docker status
+	$ chkconfig docker on --> to start docker automatically on restart
+	
+3. create DockerHub account using SignUp option in DockerHub
+4. Docker file code:
+   FROM tomcat: latest
+   RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+   COPY */*.war /usr/local/tomcat/webapps

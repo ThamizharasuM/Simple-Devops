@@ -1,0 +1,81 @@
+In DOCKER CLI:
+1. Create dockeradmin user --> $useradd dockeradmin
+2. Create password --> $passwd dockeradmin --> Password: docker@123
+3. To enable password based authentication: $vi /etc/ssh/sshd_config
+   "Uncomment Password based authentication"
+4. To reload SSHD configuration: $ service sshd reload
+5. To add dockeradmin user to docker group: usermod -aG docker dockeradmin
+6. To check user status: $id dockeradmin
+7. Install docker in DockerHost CLI as below:
+	$ yum install docker --> to install docker
+	$ service docker start --> to start docker
+	$ service docker status --> to check docker status
+	$ chkconfig docker on --> to start docker automatically on restart
+8. Add new directory for Docker under opt --> $mkdir /opt/docker
+9. Give ownership for that directory to dockeradmin as root --> chown -R dockeradmin:dockeradmin /opt/docker
+10. Save the War file(will be sent via Jenkins) and Dockerfile in this location.
+11. Docker file code:
+   FROM tomcat: latest
+   RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+   COPY ./*.war /usr/local/tomcat/webapps	
+	
+In JENKINS GUI:
+Setup:
+Manage Jenkins-->  Global Tool Configuration
+•	JDK
+		Name: Java-11
+		JAVA_HOME: /usr/lib/jvm/java-11-amazon-corretto.x86_64/
+•	Git
+		Name: git
+		Path to Git executable: /usr/bin/git
+•	Maven
+		Name: maven
+		Path: /opt/maven/apache-maven-3.9.2/
+
+Manage Jenkins-> Credentials->Global credentials
+•	Id: tomcat
+•	Username: admin
+•	Password: admin
+•	Kind: username with password
+
+Manage Jenkins->  Manage Plugins
+•	Maven Invoker
+•	Maven Integration
+•	Deploy to Container
+*	Publish Over SSH
+
+Manage Jenkins--> Configure System
+	hostname: <private IP of DockerHost>
+	username: dockeradmin
+	password: docker@123
+	Save 
+
+Job:
+Jenkins-> Create New Item
+•	Name: Docker_1st_Job
+•	Select Maven Project
+SCM
+•	Git
+o	Repository URL: https://github.com/ThamizharasuM/Simple-Devops.git
+o	Branches to build: */master
+
+Build Triggers
+•	Poll SCM
+o	*****
+Build
+•	Root: Pom.xml
+•	Goals & options: Clean install
+
+Post-build actions:	Send over SSH
+o	Sourcefile: webapp/target/*.war
+o	Remove prefix: webapp/target
+o	Remote directory: //opt//docker 
+
+Code: 
+    cd /opt/docker;
+	docker build -t regapp:v1 .;
+	docker stop registrationapp;
+	docker rm -f registrationapp;
+	docker run -d --name registrationapp -p 8081:8080 regapp:v1
+
+•	Save
