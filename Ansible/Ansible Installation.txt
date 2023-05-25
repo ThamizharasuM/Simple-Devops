@@ -1,0 +1,5 @@
+Launch a new instance with Amazon linux Image with t2.micro
+Refer the picture in the Post
+After launching in Ansible CLI:
+Install Python--> yum install python -y
+Install Ansible--> yum install ansible -y

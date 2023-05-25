@@ -31,6 +31,6 @@
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 
-   <h1> Deployed Artifacts to Kubernetes ! </h1>
+   <h1> Deployed Page as Docker Container ! </h1>
   
 </form>

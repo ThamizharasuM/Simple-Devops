@@ -1,0 +1,17 @@
+Ansible playbook to take the image from dockerHub and deploy it as container in DockerHost system
+
+Ansible Playbook: deploy_regapp.yml
+code:
+---
+- hosts: dockerhost
+  tasks:
+  - name: stop docker image
+    command: docker stop appserver
+    ignore_errors: yes
+   
+  - name: delete docker container
+    command: docker rm -f appserver
+    ignore_errors: yes
+   
+  - name: create container
+    command: docker run -d --name appserver -p 8081:8080 thamizharasum/regapp:v2

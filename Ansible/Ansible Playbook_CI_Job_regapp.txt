@@ -1,0 +1,23 @@
+Ansible playbook to create image out by making use of Dockerfile in Ansible server
+Tag Image and push it to DockerHub
+
+Dockerfile code:
+	From tomcat:latest
+	RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+	COPY ./*.war /usr/local/tomcat/webapps
+	
+Ansible Playbook: regapp.yml
+code:
+---
+- hosts: ansible
+  tasks:
+  - name: create docker image
+    command: docker build -t regapp:latest .
+    args:
+      chdir: /opt/docker
+	 
+  - name: create tag
+    command: docker tag regapp:v2 thamizharasum/regapp:latest
+   
+  - name: Push image to DockerHub
+    command: docker push thamizharasum/regapp:latest
