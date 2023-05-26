@@ -1,4 +1,3 @@
-In Jenkins GUI:
 In JENKINS GUI:
 Setup:
 Manage Jenkins-->  Global Tool Configuration

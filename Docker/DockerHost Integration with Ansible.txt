@@ -28,8 +28,9 @@ Install Ansible--> yum install ansible -y
 	code:
 	[DockerHost]
 	<private IP of DockerHost>
+	[ansible]
+	<private IP of Ansible>
 	
-In Jenkins GUI:
 In JENKINS GUI:
 Setup:
 Manage Jenkins-->  Global Tool Configuration
@@ -90,6 +91,8 @@ o	Remote directory: //opt//docker
 Code: 
     cd /opt/docker;
 	ansible-playbook /opt/docker/regapp.yml
+	sleep 10;
+	ansible-playbook /opt/docker/deploy-regapp.yml
 	
 •	Save
 

@@ -14,4 +14,4 @@ code:
     ignore_errors: yes
    
   - name: create container
-    command: docker run -d --name appserver -p 8081:8080 thamizharasum/regapp:v2
+    command: docker run -d --name appserver -p 8081:8080 thamizharasum/regapp:latest

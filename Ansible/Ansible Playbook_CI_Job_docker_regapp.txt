@@ -17,7 +17,7 @@ code:
       chdir: /opt/docker
 	 
   - name: create tag
-    command: docker tag regapp:v2 thamizharasum/regapp:latest
+    command: docker tag regapp:latest thamizharasum/regapp:latest
    
   - name: Push image to DockerHub
     command: docker push thamizharasum/regapp:latest
