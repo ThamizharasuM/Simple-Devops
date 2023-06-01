@@ -51,8 +51,11 @@ You can follow same procedure in the official AWS document Getting started with 
 	--region ap-south-1 \
 	--node-type t2.small \
 	
+	eksctl create cluster --name thamizh --region ap-south-1 --node-type t2.small
+	
 6. To delete the EKS clsuter
 	eksctl delete cluster valaxy --region ap-south-1
+	eksctl delete cluster thamizh --region ap-south-1
 	
 7. Validate your cluster using by creating by checking nodes and by creating a pod
 	kubectl get nodes
