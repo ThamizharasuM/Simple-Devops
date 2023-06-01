@@ -1,0 +1,55 @@
+In JENKINS GUI:
+Setup:
+Manage Jenkins-->  Global Tool Configuration
+•	JDK
+		Name: Java-11
+		JAVA_HOME: /usr/lib/jvm/java-11-amazon-corretto.x86_64/
+•	Git
+		Name: git
+		Path to Git executable: /usr/bin/git
+•	Maven
+		Name: maven
+		Path: /opt/maven/apache-maven-3.9.2/
+
+Manage Jenkins-> Credentials->Global credentials
+•	Id: tomcat
+•	Username: admin
+•	Password: admin
+•	Kind: username with password
+
+Manage Jenkins->  Manage Plugins
+•	Maven Invoker
+•	Maven Integration
+•	Deploy to Container
+*	Publish Over SSH
+	
+Manage Jenkins--> Configure System
+--> SSH --> User --> ansadmin
+			hostname --> <pvt IP of Ansible system>
+			password --> ans@123	
+
+Job:
+Jenkins-> Create New Item
+•	Name: Registration_Application_CI job_using_Ansible
+•	Select: Maven Project
+SCM
+•	Git
+o	Repository URL: https://github.com/ThamizharasuM/Simple-Devops.git
+o	Branches to build: */master
+
+Build Triggers
+•	Poll SCM
+o	*****
+Build
+•	Root: Pom.xml
+•	Goals & options: Clean install
+
+Post-build actions:	Send over SSH
+o	Sourcefile: webapp/target/*.war
+o	Remove prefix: webapp/target
+o	Remote directory: //opt//docker 
+
+Code: 
+    ansible-playbook /opt/docker/regapp.yml
+	
+•	Save
