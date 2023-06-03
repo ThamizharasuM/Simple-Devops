@@ -1,0 +1,11 @@
+To deploy Kubernetes deployment--> kubectl apply -f kube_deploy.yml
+To deploy kubernetes service--> kubectl apply -f kube_service.yml
+To check Pod CPU utilization--> kubectl top pods
+To display pod details--> kubectl get pods
+To display pod details--> kubectl get pods -o wide
+To display pod details in detail--> kubectl describe pods
+To display service details--> kubectl get svc
+To display all the resources--> kubectl get all
+To display service in detail--> kubectl describe svc <servicename>
+To delete Kubernetes deployment--> kubectl delete -f kube_deploy.yml
+To delete kubernetes service--> kubectl delete -f kube_service.yml

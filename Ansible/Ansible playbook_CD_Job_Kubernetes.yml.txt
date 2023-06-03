@@ -3,6 +3,12 @@
   user: root
   
   tasks:
+  - name: delete regapp on Kubernetes
+    command: kubectl delete -f kube_deploy.yml
+ 
+  - name: delete existing regapp service on Kubernetes
+    command: kubectl delete -f kube_service.yml
+	
   - name: deploy regapp on Kubernetes
     command: kubectl apply -f kube_deploy.yml
 	
